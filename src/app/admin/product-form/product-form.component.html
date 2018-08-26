@@ -1,0 +1,38 @@
+<!-- div.form-group>label+input.form-control -->
+<form>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <div class="input-group"></div>
+    <span class="span input-group-addon">$</span>
+    <input id="price" type="number" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select id="category" class="form-control">
+      <option value=""></option>
+      <option (click)="listClick($event, c.categoryName)" *ngFor="let c of categories$.categories" [value]="c.$key">
+        {{ c.categoryName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl">Image Url</label>
+    <input id="imageUrl" type="text" class="form-control">
+  </div>
+
+  <button class="btn btn-primary">Save</button>
+</form>
+<br/>
+<div class="form-group">
+  <label for="title">Create A Category</label>
+  <input id="title" type="text" class="form-control" [(ngModel)]="text">
+
+  <button (click)="onSaveCategory()" class="btn btn-primary">Save Category</button>
+</div>
