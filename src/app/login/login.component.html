@@ -1,4 +1,15 @@
+<div style="max-width: 300px;">
+    <div class="form-group">
+        <label for="title">Email</label>
+        <input id="title" type="text" class="form-control" [(ngModel)]="email">
+    
+        <label for="password">Password</label>
+        <input id="password" type="password" class="form-control" [(ngModel)]="password">
 
-<button (click)="login()" 
-class="btn btn-primary">Login with Google</button>
+    </div>
+    <button class="btn btn-primary" (click)="login()">logIn</button>
+    <button style="float:right" class="btn btn-primary" routerLink="/signup">SignUp</button>
+</div>
+<br>
+<button class="btn btn-primary" (click)="toggle()">click</button>
 

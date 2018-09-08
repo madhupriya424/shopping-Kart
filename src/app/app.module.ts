@@ -27,6 +27,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+import { MatSort, MatTableModule,MatSortModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,15 @@ import { FormsModule } from '../../node_modules/@angular/forms';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    SignupComponent
     
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
+    MatTableModule,
+    MatSortModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
@@ -77,6 +84,10 @@ import { FormsModule } from '../../node_modules/@angular/forms';
         path: 'admin/orders', 
         component: AdminOrdersComponent, 
         canActivate: [AuthGuard, AdminAuthGuardService]
+      },
+      {
+        path: 'signup',
+        component: SignupComponent
       },
       { path: '**', component: HomeComponent }
     ])

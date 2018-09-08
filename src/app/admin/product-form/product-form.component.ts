@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../category.service';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-product-form',
@@ -8,24 +9,34 @@ import { CategoryService } from '../../category.service';
 })
 export class ProductFormComponent implements OnInit {
 
-  categories$: Object;
-  text: string;
+  categories$: Object[]=[];
+  newCategory: string;
+  title: string;
+  imageUrl: string;
+  price: number;
+  category: string;
 
-
-  constructor(private categoriesService: CategoryService) {
-    this.categories$ = this.categoriesService.getCategories().subscribe(response => {   
-      this.categories$ = response; 
+  constructor(private categoriesService: CategoryService, private productService: ProductService) {
+    this.categoriesService.getCategories().subscribe(response => {   
+      this.categories$ = <Object[]>response; 
        console.log(this.categories$);   
        });
       }
     ngOnInit()
     {}
 
+    onSaveProduct(data){
+     this.productService.saveProduct(data).subscribe(response => {
+       console.log(response);
+     });
+    }
+
     onSaveCategory(){
-      console.log(this.text);
-      let body = {categoryName: this.text};
-      this.categoriesService.saveCategory(body).subscribe(response => {
+      //this.categories$.push({categoryName: this.newCategory});
+      this.categoriesService.saveCategory(this.newCategory).subscribe(response => {
+      // this.categories$.push({categoryName: this.newCategory});
         console.log(response);
       });
+    // console.log(this.newCategory);
     }
 }

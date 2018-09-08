@@ -15,7 +15,7 @@ export class CategoryService {
   }
   
   saveCategory(body){
-    console.log(body);
-    return this.http.post("http://localhost:6002/api/categories", body);
+    //console.log(body);
+    return this.http.post("http://localhost:6002/api/categories", {categoryName: body});
   }
 }

@@ -11,12 +11,23 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
 
+  email: string;
+  password: string;
+  text: "Click this to turn this color";
+  click=false;
+
    constructor(private auth: AuthService) {
     }
 
 
   login(){       //AngularFire is a abstraction over the firebase library.AngularFire has very few or limited support of authenication. so we directly use firebase here.
-   this.auth.login();
+    // let data = {email: this.email, password: this.password}
+    // this.auth.login(data).subscribe((res)=> {
+    //   if(res){
+    //     this.auth.user=res;
+    //   }
+    // });
+  this.auth.user={name: "madhu"};
   }
 
  
